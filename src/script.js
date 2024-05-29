@@ -47,6 +47,9 @@ function updateList() {
 
 function updateCity(event) {
   let cityUpdate = event.target.value;
+  if (cityUpdate === "current") {
+    cityUpdate = moment.tz.guess();
+  }
   let cityName = cityUpdate.split("/")[1];
   let cityUpdateTime = moment().tz(cityUpdate);
   let chosenCity = document.querySelector("#city-update");
@@ -70,4 +73,3 @@ setInterval(updateList, 1000);
 
 let citySelect = document.querySelector("#city");
 citySelect.addEventListener("change", updateCity);
-setInterval(updateCity, 1000);
